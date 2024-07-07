@@ -1,18 +1,37 @@
-# Salesforce DX Project: Next Steps
+Ecart-LWC-UI-Page Demo
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+**Overview**
 
-## How Do You Plan to Deploy Your Changes?
+This project showcases a comprehensive page for products screen using Lightning Web Components (LWC). 
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+The app demonstrates key features and concepts, including:
+- **Pagination**: Efficient data retrieval and display with pagination controls
+- **Filters**: Dynamic filtering of products by category and price range
+- **Cart**: Add and manage products in a shopping cart with update quantities and subtotal
+- **Search Bar**: Quick search functionality to find products by name or description
 
-## Configure Your Salesforce DX Project
+LWC Concepts
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+This project also highlights fundamental LWC concepts, including:
 
-## Read All About It
+- Components: Modular, reusable UI components
+- Properties: Passing data between components using properties
+- Events: Handling events and callbacks
+- Services: Using services for data management and API calls
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Features
+
+- User-friendly interface for browsing and searching products
+- Efficient data management with pagination and filtering
+- Interactive cart system with real-time updates
+- Demonstrates best practices for LWC development
+
+Technologies Used
+
+- Lightning Web Components (LWC)
+- HTML
+- CSS
+- JavaScript
+
+https://github.com/SubbuDommeti/Ecart-LWC-UI-Page-/assets/89302010/5dc5db1c-1ee5-4d8e-8434-4098abb47e3c
+
