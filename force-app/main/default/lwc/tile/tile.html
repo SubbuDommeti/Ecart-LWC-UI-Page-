@@ -1,0 +1,103 @@
+<template>
+    <div class="flex-body">
+        <!-- <a onclick={openProductDetail} href="javascript:void(0);">
+            <img class="product-img" src={singleProduct.image__c}></img> 
+        </a>     
+        <div class="productDetails">
+            <p>{singleProduct.Name}</p>
+            <p>{singleProduct.price__c}/-</p>
+        </div> 
+        <div class="productButtons">
+            <lightning-button label="cart"></lightning-button>
+            <lightning-button label="love"></lightning-button>
+        </div> -->
+
+        
+        <div class="product-box">
+            <img class="product-img" src={singleProduct.image__c}  onclick={openProductDetail} alt=""></img>
+            <h4 class="product-title">{singleProduct.Name}</h4>
+            <span class="product-price">{singleProduct.price__c}/-</span>
+            <!-- <lightning-icon icon-name="utility:favorite"  size="small" class="product-wishlist" alternative-text="wishlist"></lightning-icon> -->
+            <lightning-icon icon-name="utility:cart" size="small" class="product-cart"  name="cartTileIcon" alternative-text="cart" data-prodid={singleProduct.Id} onclick={addToBag}></lightning-icon>
+        </div>
+    </div>
+    <template if:true={showModal}>
+        <section role="dialog" class="slds-modal slds-fade-in-open slds-align_absolute-center modal-card">
+            <div class="slds-modal__container">
+                <lightning-icon class="slds-modal__close slds-button_icon-inverse modal-close-icon" onclick={handlcloseModal} icon-name="utility:close"  variant="inverse" size="small">
+                </lightning-icon>
+                <!-- <div class="slds-modal__content modal-content">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col  slds-large-size_8-of-12">
+                                <img class="product-img" src={singleProduct.image__c}></img>
+                        </div>
+                        <div class="slds-col slds-large-size_1-of-12">
+
+                        </div>
+                        <div class="slds-row slds-small-size_3-of-12">
+                            <div class="slds-grid">
+                                <div class="slds-row">
+                                    <span>Name :  {singleProduct.Name}</span>
+                                </div>
+                                <div class="slds-row">
+                                    <span>Price : {singleProduct.price__c}</span>
+                                </div>
+                                <div class="slds-row">
+                                    <span>Price : {singleProduct.price__c}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                                  
+                    <div style="align-items: center;">
+                        <lightning-button variant="brand" onclick={addToBag} label="Add to Cart"></lightning-button>
+                    </div>
+                </div>                                            -->
+
+                <div class="slds-modal__content modal-content slds-modal_medium" style="padding-top:1cm;">
+                    <div class="slds-grid slds-grid_pull-padded-medium modal-content">
+                        <div class="slds-col slds-p-horizontal_medium">
+                            <span><img class="product-img" src={singleProduct.image__c}></img></span>
+                        </div>
+                        <div class="slds-col">
+                            <div class="slds-grid slds-grid_vertical">
+                                <div class="slds-col">
+                                    <span>Name : </span>
+                                    <span>{singleProduct.Name}</span>
+                                </div>
+                                <div class="slds-col">
+                                    <span>Price : </span>
+                                    <span>{singleProduct.price__c}</span>
+                                </div>
+                                <div class="slds-col">
+                                    <span>Category : </span>
+                                    <span>{singleProduct.category__c}</span>
+                                </div>
+                                <div class="slds-col">
+                                    <span>Discount : </span>
+                                    <span>{singleProduct.discount__c} %</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer" style="float:right;">
+                        <lightning-button variant="brand" onclick={addToBag} label="Add to Cart" data-prodid={singleProduct.Id}></lightning-button>
+                    </div>
+                </div>
+            </div>                    
+        </section>
+    </template>
+    <div class="slds">
+
+    </div>
+    <!-- <div class="container">
+        <a onclick={openProductDetail} href="javascript:void(0);"> -->
+            <!-- <div class="title">{singleProduct.Name}</div> -->
+            <!-- <img class="product-img" src={singleProduct.image__c}></img> -->
+            <!-- <div class="price">{singleProduct.price__c}/-</div> -->
+            <!-- <div class="slds-box slds-theme_default text">
+                {singleProduct.Name}
+                {singleProduct.price__c}/-
+            </div>
+        </a>               
+    </div> -->
+</template>

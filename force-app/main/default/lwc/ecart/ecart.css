@@ -1,0 +1,16 @@
+.modal-close-icon
+{
+  --sds-c-icon-color-foreground: black;
+}
+.modal-card
+{
+    scroll-behavior: smooth;
+    display: flex;
+    height: max-content;
+    justify-items: center;
+    align-items: center;
+
+}
+table{  
+    margin: 15px;
+  }

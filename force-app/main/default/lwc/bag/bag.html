@@ -1,0 +1,29 @@
+<template>
+     <lightning-card>
+        <h1 class="title">E-Cart</h1>
+        <lightning-layout>
+          <lightning-layout-item size="10" class="slds-m-around_x-large">
+              <lightning-input label="Search Products" name="search" value={searchKey} onchange={handleSearch}></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item class="slds-float_right" style="padding-top: 40px; position:sticky" size="2">     
+              <strong><sup style="font-size: 16px; padding-left: 20px; color:red;"><h1>{bagCount}</h1></sup></strong>
+              <lightning-icon icon-name='utility:cart' alternative-text='cart' size='medium' title='cart' onclick={hadleCartOpen} style="cursor:pointer;"></lightning-icon>             
+          </lightning-layout-item>
+        </lightning-layout>
+     </lightning-card>
+     
+</template>
+
+<!-- <article class="slds-card">
+  <div class="slds-card__header  slds-grid slds-gutters">
+    <header class="slds-col slds-size_10-of-12">
+      <div class="slds-media__body">
+          <lightning-input label="Search product" name="search" value={searchKey} onchange={handleSearch}></lightning-input>
+      </div>
+    </header>
+    <div class="slds-col slds-size_2-of-12">
+        <lightning-icon icon-name="utility:cart" alternative-text="cart" title="Add your products here"></lightning-icon>
+        <h2><sup>{bagCount}</sup></h2>
+    </div>
+  </div>
+</article> -->

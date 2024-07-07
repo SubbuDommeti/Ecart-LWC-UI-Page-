@@ -1,0 +1,134 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-12">
+            <div>
+                <lightning-card title="Filters">                
+                    <div class="slds-p-left_medium slds-p-bottom_x-small slds-p-right_medium slds-p-top_x-small">
+                        <lightning-slider  label="Min Price" name="minValue" data-id="minValue" onchange={filterProducts}  value={searchFilter.minVal} min="10" max="1000"></lightning-slider>
+                        <lightning-slider label="Max Price" name="maxValue" data-id="maxValue" onchange={filterProducts} value={searchFilter.maxVal}  min="50" max="1500"></lightning-slider>
+                        <lightning-combobox
+                            name="category"
+                            label="Category"
+                            value={searchFilter.categoryVal}
+                            placeholder="Select Category"
+                            options={categoryOptions}
+                            data-id="categoryValue"
+                            onchange={filterProducts}>
+                        </lightning-combobox>
+                        <lightning-combobox
+                            name="size"
+                            label="Size"
+                            value={searchFilter.sizeVal}
+                            placeholder="Select Size"
+                            options={sizeOptions} 
+                            data-id="sizeValue"
+                            onchange={filterProducts}>
+                        </lightning-combobox> 
+                    </div> 
+                    <div class="slds-grid slds-gutters slds-p-horizontal_small">
+                        <div class="slds-col">
+                            <lightning-button label="Reset" variant="neutral" onclick={resetChanges}></lightning-button>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-button label="Apply" variant="brand" onclick={filterProducts}></lightning-button>
+                        </div>
+                    </div>                
+                </lightning-card>
+            </div>
+            <div>
+                <lightning-card title="Reward Points"> 
+                    <div class="slds-container_fluid">
+                        <h2 class="slds-align_absolute-center" style="font-size: x-large; color:green; font-style:initial;">{rewardPoints}</h2>
+                        <div class="slds-m-around_medium">
+                            Thank you for being a part of our sustainability initiative and contributing to the environment.                            
+                        </div>
+                        <div class="slds-m-around_small">
+                            You can now redeem these points at your nearest walk in store.                          
+                        </div>
+                    </div>
+                </lightning-card>
+            </div>
+         </div>
+        <div class="slds-col slds-size_9-of-12">
+            <lightning-card style="background-color:rgb(111, 107, 107) ;">
+                <c-bag bag-count={bagCount} search-key={searchFilter.key} onsearch={filterProducts} oncart={openCart}></c-bag>
+                <c-products onaddtobag={addToBag}></c-products>
+            </lightning-card>
+        </div>  
+    </div>
+    <template if:true={showCart}>
+        <div class="custom-modal">
+            <section role="dialog" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <span class="slds-modal__close">
+                            <lightning-icon class="modal-close-icon" icon-name="utility:close" onclick={handlcloseModal} variant="inverse" alternative-text="close"></lightning-icon>
+                        </span>
+                        <h2 class="slds-text-heading_medium" style="font-size:x-large; font-weight :800;">CART</h2>
+                    </header>
+                    <div class="slds-modal__content ">
+                        <lightning-card  style="overflow-y: scroll;"> 
+                            <table>
+                                <thead class="slds-theme_shade" style="font-size: large;">
+                                    <tr>
+                                       <th>Name</th>
+                                        <th>Image</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>  
+                                        <th></th> 
+                                    </tr>                                                                      
+                                </thead>
+                                <tbody>
+                                    <template for:each={cartProducts} for:item="cardProducts">
+                                        <tr  key={cardProducts.Id}>
+                                            <td>{cardProducts.Name}</td>
+                                            <td><img class="product-img" src={cardProducts.image__c} style="width:60px; height:60px;"  alt=""></img></td>
+                                            <td>1</td>
+                                            <td>{cardProducts.price__c}/-</td>
+                                            <td><lightning-button data-id={cardProducts.Id} onclick={removeFromBag} label='Remove' variant="destructive-text"></lightning-button></td>
+                                        </tr>
+                                    </template>
+                                    <tr>
+                                        <td><div style="font-weight: bold; font-size:medium;">Total</div></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><div style="font-weight: bold; font-size:medium;">{cartProductsTotalPrice}/-</div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>                                
+                            </table>
+                            <div slot="footer">
+                                <lightning-button label="Check Out" variant="brand" disabled={isCheckoutVisible} onclick={handleCheckOut}></lightning-button>
+                            </div>                        
+                        </lightning-card>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>         
+    </template>   
+    <!-- <template if:true={isCheckOutDone}>
+        <div class="custom-modal">
+            <section role="dialog" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <span class="slds-modal__close">
+                            <lightning-icon icon-name="utility:close" variant="inverse" alternative-text="close" onclick={closeCheckoutModal}></lightning-icon>
+                        </span>
+                        <h2 class="slds-text-heading_medium slds-hyphenate slds-theme_success">Check Out Success</h2>
+                    </header>
+                    <div class="slds-modal__content ">
+                        <div class="slds-align_absolute-center">
+                            Congratualations! You have purchased a sustainable product. <br/>
+                                    Check your Reward Points Section.
+                        </div>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Cancel" title="Cancel" class="slds-m-right_small" onclick={closeCheckoutModal}></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>                           
+    </template> -->
+</template>
